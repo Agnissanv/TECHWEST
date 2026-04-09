@@ -230,7 +230,7 @@ footer {
     margin: 2% auto;
     padding: 40px;
     width: 80%;
-    max-width: 800px;
+    max-width: 1000px;
     border-radius: 20px;
     position: relative;
 }
@@ -238,7 +238,7 @@ footer {
 .close-modal {
     position: absolute;
     top: 20px; right: 30px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
     font-weight: bold;
     color: var(--dark);
@@ -246,8 +246,8 @@ footer {
 
 /* Style de l'article dans la modale */
 #modalBody img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
-#modalBody h2 { font-size: 2.2rem; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
-#modalBody p { font-size: 1.2rem; color: #444; line-height: 1.8; }
+#modalBody h2 { font-size: 2rem; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+#modalBody p { font-size: 1rem; color: #444; line-height: 1.8; }
 
 /* LA BANNIÈRE PUB (IDS Tech) */
 .ads-banner {
