@@ -51,6 +51,36 @@ body {
     letter-spacing: -1px;
 }
 
+/* Design du bouton JOB WEST dans la nav */
+.job-cta-btn {
+    background: #202020; /* Vert Succès / Argent */
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    white-space: nowrap; /* Empêche le texte de se couper sur 2 lignes */
+}
+
+.job-cta-btn:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 230, 118, 0.4);
+}
+
+/* Ajustement Mobile */
+@media (max-width: 768px) {
+    .job-cta-btn {
+        margin: 10px 0;
+        text-align: center;
+        display: block;
+    }
+}
+
 .logo span { color: var(--primary); }
 
 .search-area { display: flex; gap: 10px; }

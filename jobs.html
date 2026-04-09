@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB WEST | Le Hub des Talents Tech en Afrique</title>
+    <link rel="stylesheet" href="jobs.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <header>
+        <div class="logo">TECH WEST <span>CI</span></div>
+        <nav>
+            <a href="index.html">Actualités</a>
+            <a href="jobs.html" class="active" style="color: #FF9900; font-weight: bold;">Offres d'Emploi</a>
+        </nav>
+    </header>
+
+    <section class="hero-container" style="text-align: center; padding: 40px 20px; background: #1a1a1a; border-bottom: 2px solid #333;">
+        <h1 style="color: #FF9900; font-size: 2.5rem;">Décroche le Job que tu Mérites.</h1>
+        <p style="color: #ccc; font-size: 1.2rem; max-width: 600px; margin: 15px auto;">Les meilleures offres en Web, Design et Télétravail (Remote) filtrées pour les talents africains.</p>
+        
+        <div class="job-filters" style="margin-top: 25px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <button class="ad-button" onclick="filterJobs('All')">Tout</button>
+            <button class="ad-button" style="background: #333; color: white;" onclick="filterJobs('Dev')">💻 Développement</button>
+            <button class="ad-button" style="background: #333; color: white;" onclick="filterJobs('Design')">🎨 Design GFX</button>
+            <button class="ad-button" style="background: #333; color: white;" onclick="filterJobs('Remote')">🌍 Remote (Télétravail)</button>
+        </div>
+    </section>
+
+    <div class="ad-banner-container" style="margin-top: 20px;">
+        <div class="ad-card" style="border-color: #00E676;">
+            <div class="ad-badge" style="background: #00E676;">BOOST CV</div>
+            <div class="ad-content">
+                <div class="ad-text">
+                    <h3 style="color: #00E676;">Ton CV passe-t-il les filtres des RH ?</h3>
+                    <p>Découvre nos E-books pro d'optimisation de CV et décroche 3x plus d'entretiens. Méthodes approuvées.</p>
+                </div>
+                <a href="#" class="ad-button" style="background: #00E676; color: black;">Obtenir le Guide →</a>
+            </div>
+        </div>
+    </div>
+
+    <main id="jobs-grid" class="container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 40px 20px;"></main>
+
+    <script src="jobs.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* JOBS.CSS - Style spécifique pour JOB WEST */
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Le Header / Nav (on réutilise le look global) */
+header {
+    background: #111;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+}
+
+/* La Grille d'offres */
+#jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Les Cartes d'Emploi */
+.job-card {
+    background: #111111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.job-card:hover {
+    border-color: #FF9900;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.job-card .company {
+    color: #FF9900;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.job-card h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.job-card .location {
+    color: #bbb;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.job-card .salary {
+    color: #00E676; /* Vert Argent */
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+/* Bouton Postuler */
+.apply-btn {
+    background: #00E676;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: auto; /* Pousse le bouton en bas de la carte */
+    transition: 0.3s;
+}
+
+.apply-btn:hover {
+    background: #fff;
+    transform: scale(1.02);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    #jobs-grid {
+        grid-template-columns: 1fr;
+    }
+}
