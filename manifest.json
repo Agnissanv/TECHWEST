@@ -1,0 +1,20 @@
+{
+  "name": "Tech West Africa",
+  "short_name": "TechWest",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#FF9900",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192/FF9900/FFFFFF?text=TW",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/FF9900/FFFFFF?text=TechWest",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

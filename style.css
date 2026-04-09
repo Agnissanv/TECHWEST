@@ -1,0 +1,303 @@
+/* VARIABLES DE DESIGN */
+:root {
+    --primary: #FF9900;    /* Orange Tech West */
+    --secondary: #00A859;  /* Vert Innovation */
+    --dark: #121212;       /* Noir profond pour le sérieux */
+    --gray-bg: #f8f9fa;    /* Gris très clair pour le fond */
+    --text-main: #2c3e50;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--gray-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* NAVIGATION */
+.navbar {
+    background: var(--dark);
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.logo span { color: var(--primary); }
+
+.search-area { display: flex; gap: 10px; }
+
+.search-area input {
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    background: #2a2a2a;
+    color: white;
+    width: 250px;
+}
+
+.search-area button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-area button:hover { opacity: 0.9; transform: scale(1.05); }
+
+/* MAIN CONTENT */
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin: 40px 0 20px;
+    border-left: 5px solid var(--primary);
+    padding-left: 15px;
+}
+
+.separator {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 50px 0;
+}
+
+/* HERO SECTION (À LA UNE) */
+.hero-card {
+    position: relative;
+    height: 550px;
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    transition: var(--transition);
+}
+
+.hero-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.hero-card:hover img { transform: scale(1.05); }
+
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 60px 40px 40px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.6), transparent);
+    color: white;
+}
+
+.hero-overlay span {
+    background: var(--primary);
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.hero-overlay h2 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+/* GRID DES NEWS */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-content { padding: 20px; }
+
+.card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.btn-read {
+    display: inline-block;
+    padding: 8px 0;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.btn-read:hover { border-bottom-color: var(--primary); }
+
+/* FOOTER */
+footer {
+    background: var(--dark);
+    color: #888;
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-card { height: 400px; }
+    .hero-overlay h2 { font-size: 1.8rem; }
+    .search-area input { width: 150px; }
+    .navbar .logo { font-size: 1.4rem; }
+}
+
+
+
+
+/* La fenêtre modale */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 2% auto;
+    padding: 40px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+/* Style de l'article dans la modale */
+#modalBody img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
+#modalBody h2 { font-size: 2.2rem; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+#modalBody p { font-size: 1.2rem; color: #444; line-height: 1.8; }
+
+/* LA BANNIÈRE PUB (IDS Tech) */
+.ads-banner {
+    margin-top: 50px;
+    padding: 30px;
+    background: var(--dark);
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid var(--primary);
+}
+
+.btn-ads {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+.category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap; /* Pour que ça reste propre sur mobile */
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.filter-btn.active {
+    background: var(--dark);
+    color: white;
+    border-color: var(--dark);
+}

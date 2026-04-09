@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech West | Le média de l'innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+    }
+    </script>
+    <link rel="apple-touch-icon" href="https://via.placeholder.com/192x192/FF9900/FFFFFF?text=TW">
+    </head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">TECH<span>WEST</span></a>
+            <div class="search-area">
+                <input type="text" id="searchInput" placeholder="Rechercher une startup, un pays...">
+                <button id="searchBtn">Explorer</button>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="category-filters">
+        <button class="filter-btn active" onclick="filterTech('all')">Tout</button>
+        <button class="filter-btn" onclick="filterTech('IA')">Intelligence Artificielle</button>
+        <button class="filter-btn" onclick="filterTech('Fintech')">Fintech & Banque</button>
+        <button class="filter-btn" onclick="filterTech('Crypto')">Web3 & Crypto</button>
+        <button class="filter-btn" onclick="filterTech('Startup')">Startups Afrique</button>
+    </div>
+
+
+    <main class="main-content">
+        
+        <section id="hero-article" class="hero-section">
+            <div class="loader-placeholder">Analyse des flux en cours...</div>
+        </section>
+
+        <hr class="separator">
+
+        <h2 class="section-title">Dernières Innovations</h2>
+        <section id="news-grid" class="news-grid">
+            </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TECH WEST - L'agence de l'innovation numérique en Afrique de l'Ouest.</p>
+    </footer>
+
+
+
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times; Fermer</span>
+            <div id="modalBody">
+                </div>
+            
+            <div class="ads-banner">
+                <h3>Besoin d'un projet digital performant ?</h3>
+                <p>Le design qui parle, le code qui agit. De la conception à la mise en ligne, nous réalisons vos ambitions.</p>
+                <a href="https://agnissanv.github.io/Portofolio_Agnissan_Isaac.io/" class="btn-ads" target="_blank">Contacter IDS Tech</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
