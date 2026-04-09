@@ -72,7 +72,11 @@ body {
     transition: var(--transition);
 }
 
-.search-area button:hover { opacity: 0.9; transform: scale(1.05); }
+.search-area button:hover { 
+    opacity: 0.9; transform: scale(1.05); 
+}
+
+
 
 /* MAIN CONTENT */
 .main-content {
@@ -365,4 +369,52 @@ footer {
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- ADAPTATION MOBILE --- */
+@media (max-width: 768px) {
+    /* 1. On empile les éléments de la barre de navigation */
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    /* 2. On ajuste la zone de recherche pour qu'elle prenne toute la largeur */
+    .search-area {
+        width: 100%;
+        display: flex;
+        gap: 5px;
+    }
+
+    .search-area input {
+        width: 100%; /* L'input prend la place restante */
+    }
+
+    /* 3. On réduit la taille du texte de la "Une" pour mobile */
+    .hero-overlay h2 {
+        font-size: 1.4rem;
+    }
+
+    .hero-overlay p {
+        font-size: 0.9rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* On coupe le texte plus court sur mobile */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* 4. On passe la grille sur une seule colonne propre */
+    #news-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    /* 5. On ajuste la modale (lecture) pour qu'elle soit plein écran */
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 15px;
+    }
 }
