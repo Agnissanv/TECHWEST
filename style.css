@@ -301,3 +301,67 @@ footer {
     color: white;
     border-color: var(--dark);
 }
+
+
+/* Conteneur principal */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Le bouton principal */
+.dropdown-toggle {
+    background: #1a1a1a;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* La bande qui se déroule (le menu) */
+.dropdown-menu {
+    display: none; /* Caché par défaut */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1a1a1a;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+    z-index: 1000;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-top: 5px;
+    overflow: hidden; /* Pour que les boutons ne dépassent pas des bords arrondis */
+}
+
+/* Affichage au survol (ou tu peux gérer au clic en JS) */
+.custom-dropdown:hover .dropdown-menu {
+    display: block;
+    animation: slideDown 0.2s ease-out;
+}
+
+/* Les boutons à l'intérieur de la bande */
+.dropdown-menu .filter-btn {
+    width: 100%;
+    text-align: left;
+    padding: 12px 15px;
+    background: none;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.dropdown-menu .filter-btn:hover {
+    background: #FF9900;
+    color: black;
+}
+
+/* Animation de déroulement */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

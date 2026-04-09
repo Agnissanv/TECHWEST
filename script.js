@@ -16,15 +16,23 @@ let currentArticles = [];
 async function getTechNews(userInput = "") {
     const query = userInput || "technologie Afrique OR IA OR Fintech";
     
-    // On lance les deux appels en même temps pour gagner du temps
-    const [newsApiData, gNewsData] = await Promise.all([
+    // Affiche un petit message console pour toi (mode debug)
+    console.log("Chargement des 3 sources...");
+
+    // On lance les TROIS appels en même temps
+    const [newsApiData, gNewsData, rssData] = await Promise.all([
         fetchFromNewsAPI(query),
-        fetchFromGNews(query)
+        fetchFromGNews(query),
+        fetchFromRSS() // La nouvelle source !
     ]);
 
-    // On fusionne les résultats et on mélange (Shuffle)
-    currentArticles = [...newsApiData, ...gNewsData].sort(() => Math.random() - 0.5);
+    // On fusionne tout (NewsAPI + GNews + RSS)
+    currentArticles = [...newsApiData, ...gNewsData, ...rssData];
+
+    // On mélange pour ne pas avoir tous les RSS à la fin
+    currentArticles.sort(() => Math.random() - 0.5);
     
+    console.log(currentArticles.length + " articles chargés au total.");
     displayArticles();
 }
 
@@ -48,6 +56,38 @@ async function fetchFromGNews(q) {
         const data = await res.json();
         return data.articles || [];
     } catch { return []; }
+}
+
+// SOURCE 3 : L'Aspirateur RSS (Illimité - Agence Ecofin & TechCrunch)
+async function fetchFromRSS() {
+    const rssUrls = [
+        'https://www.agenceecofin.com/telecom/flux-rss',
+        'https://techcrunch.com/feed/'
+    ];
+    
+    let allRssArticles = [];
+    
+    for (let rss of rssUrls) {
+        // On utilise rss2json (gratuit) pour convertir le flux XML en JSON exploitable
+        const url = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rss)}`;
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            const mapped = (data.items || []).map(item => ({
+                title: item.title,
+                // On nettoie les balises HTML dans la description
+                description: item.description.replace(/<[^>]*>?/gm, '').substring(0, 200),
+                url: item.link,
+                urlToImage: item.enclosure.link || item.thumbnail || 'https://images.unsplash.com/photo-1504711432869-0df10b1dfac4?auto=format&fit=crop&w=800',
+                source: { name: data.feed.title } // On harmonise le format avec les autres API
+            }));
+            allRssArticles = [...allRssArticles, ...mapped];
+        } catch (err) { 
+            console.log("Erreur RSS:", err);
+            continue; 
+        }
+    }
+    return allRssArticles;
 }
 
 // 2. FONCTION POUR OUVRIR LE MODE LECTURE (AVEC IFRAME)
@@ -77,6 +117,10 @@ window.openArticle = function(index) {
     modal.style.display = "block";
     document.body.style.overflow = "hidden"; // Bloque le scroll derrière
 };
+
+
+
+
 
 // 3. AFFICHAGE DES ARTICLES
 function displayArticles() {
@@ -153,4 +197,17 @@ function filterTech(category) {
     else query = ""; // 'all' recharge la configuration par défaut
 
     getTechNews(query);
+}
+
+
+function selectCategory(cat, label) {
+    // 1. Mettre à jour le texte du bouton principal
+    document.getElementById('current-category').innerText = label + " ▼";
+    
+    // 2. Appeler ta fonction de filtrage déjà existante
+    filterTech(cat);
+    
+    // 3. (Optionnel) Fermer le menu après clic sur mobile
+    document.querySelector('.dropdown-menu').style.display = 'none';
+    setTimeout(() => { document.querySelector('.dropdown-menu').style.removeProperty('display'); }, 100);
 }

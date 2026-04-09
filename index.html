@@ -19,6 +19,23 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">TECH<span>WEST CI</span></a>
+
+
+            <div class="category-filters">
+                <div class="custom-dropdown">
+                    <button class="dropdown-toggle" id="current-category">Explorer les thèmes ▼</button>
+                    <div class="dropdown-menu">
+                        <button class="filter-btn active" onclick="selectCategory('all', 'Tout')">Tout</button>
+                        <button class="filter-btn" onclick="selectCategory('IA', 'Intelligence Artificielle')">Intelligence Artificielle</button>
+                        <button class="filter-btn" onclick="selectCategory('Fintech', 'Fintech & Banque')">Fintech & Banque</button>
+                        <button class="filter-btn" onclick="selectCategory('Crypto', 'Web3 & Crypto')">Web3 & Crypto</button>
+                        <button class="filter-btn" onclick="selectCategory('Startup', 'Startups Afrique')">Startups Afrique</button>
+                    </div>
+                </div>
+            </div>
+
+
+
             <div class="search-area">
                 <input type="text" id="searchInput" placeholder="Rechercher une startup, un pays...">
                 <button id="searchBtn">Explorer</button>
@@ -27,14 +44,7 @@
     </nav>
 
 
-    <div class="category-filters">
-        <button class="filter-btn active" onclick="filterTech('all')">Tout</button>
-        <button class="filter-btn" onclick="filterTech('IA')">Intelligence Artificielle</button>
-        <button class="filter-btn" onclick="filterTech('Fintech')">Fintech & Banque</button>
-        <button class="filter-btn" onclick="filterTech('Crypto')">Web3 & Crypto</button>
-        <button class="filter-btn" onclick="filterTech('Startup')">Startups Afrique</button>
-    </div>
-
+    
 
     <main class="main-content">
         
