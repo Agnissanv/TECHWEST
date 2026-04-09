@@ -11,33 +11,43 @@ const closeModal = document.querySelector('.close-modal');
 let currentArticles = [];
 
 // 1. RÉCUPÉRATION DES NEWS
+
+// On prépare plusieurs sources
 async function getTechNews(userInput = "") {
-    const globalTech = '(Nvidia OR OpenAI OR "Artificial Intelligence" OR "Silicon Valley" OR Apple OR Tesla OR "Web3" OR "Crypto")';
-    const localTech = ' OR (startup OR fintech OR "numérique" AND Africa)';
+    const query = userInput || "technologie Afrique OR IA OR Fintech";
     
-    let finalQuery = `(${globalTech}${localTech})`;
+    // On lance les deux appels en même temps pour gagner du temps
+    const [newsApiData, gNewsData] = await Promise.all([
+        fetchFromNewsAPI(query),
+        fetchFromGNews(query)
+    ]);
 
-    if (userInput.trim() !== "") {
-        finalQuery = `(${userInput}) AND ${finalQuery}`;
-    }
+    // On fusionne les résultats et on mélange (Shuffle)
+    currentArticles = [...newsApiData, ...gNewsData].sort(() => Math.random() - 0.5);
+    
+    displayArticles();
+}
 
-    const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(finalQuery)}&sortBy=relevancy&language=fr&pageSize=13&apiKey=${API_KEY}`;
-
+// SOURCE 1 : NewsAPI (avec ton proxy)
+async function fetchFromNewsAPI(q) {
+    const API_KEY = 'b9452ac9930b4bb1bf7289d15342ab8e';
+    const url = `https://corsproxy.io/?${encodeURIComponent(`https://newsapi.org/v2/everything?q=${q}&language=fr&apiKey=${API_KEY}`)}`;
     try {
-        const response = await fetch(url);
-        const data = await response.json();
-        
-        if (data.articles && data.articles.length > 0) {
-            // On sauvegarde les articles en mémoire !
-            currentArticles = data.articles;
-            displayArticles();
-        } else {
-            heroContainer.innerHTML = "<p>Aucun résultat.</p>";
-            newsGrid.innerHTML = "";
-        }
-    } catch (error) {
-        console.error("Erreur API :", error);
-    }
+        const res = await fetch(url);
+        const data = await res.json();
+        return data.articles || [];
+    } catch { return []; }
+}
+
+// SOURCE 2 : GNews (Crée un compte gratuit sur gnews.io pour avoir ta clé)
+async function fetchFromGNews(q) {
+    const G_KEY = '85490075a1923f579706eb767f74b6ee'; 
+    const url = `https://gnews.io/api/v4/search?q=${q}&lang=fr&token=${G_KEY}`;
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data.articles || [];
+    } catch { return []; }
 }
 
 // 2. FONCTION POUR OUVRIR LE MODE LECTURE (AVEC IFRAME)
