@@ -40,6 +40,8 @@
                 <input type="text" id="searchInput" placeholder="Rechercher une startup, un pays...">
                 <button id="searchBtn">Explorer</button>
             </div>
+                        <p><a href="#" onclick="toggleAbout()" style="color:#ccc; font-size:0.8rem;" class="abouto"><b>À Propos & Contact</b></a></p>
+
         </div>
     </nav>
 
@@ -55,13 +57,28 @@
         <hr class="separator">
 
         <h2 class="section-title">Dernières Innovations</h2>
+
+        <div class="ad-banner-container">
+            <div class="ad-card">
+                <div class="ad-badge">SPONSORISÉ</div>
+                <div class="ad-content">
+                    <div class="ad-text">
+                        <h3>Propulsez votre entreprise avec IDS Tech</h3>
+                        <p>Besoin d'un site automatisé comme TECH WEST ? Nous créons vos solutions digitales sur mesure à Abidjan.</p>
+                    </div>
+                    <a href="https://wa.me/2250769398708" class="ad-button">Discuter sur WhatsApp →</a>
+                </div>
+            </div>
+        </div>
+
         <section id="news-grid" class="news-grid">
             </section>
-
+            <p class="cta_perso">Vous voulez un site d'actualités aussi performant que celui-ci ? Contactez <a href="https://agnissanv.github.io/Portofolio_Agnissan_Isaac.io/#portfolio" target="_blank"><span>IDS Tech</span></a></p>
     </main>
 
     <footer>
-        <p>&copy; 2026 TECH WEST - L'agence de l'innovation numérique en Afrique de l'Ouest.</p>
+        <p><a href="#" onclick="toggleAbout()" style="color:#ccc; font-size:0.8rem;">À Propos & Contact</a></p>
+        <p>&copy; 2026 TECH WEST - L'agence de l'information et de l'innovation numérique en Afrique de l'Ouest. - Propulsé par <a href="#" onclick="toggleAbout()" style="color:#FF9900; text-decoration:none; font-weight:bold;">IDS Tech</a></p>
     </footer>
 
 
@@ -80,6 +97,41 @@
         </div>
     </div>
 
+
+
+
+
+
+    <div id="about-section" class="about-modal">
+    <div class="about-content">
+        <span class="close-about" onclick="toggleAbout()">&times; Fermer</span>
+        
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>À propos de TECH WEST</h2>
+                <p><strong>L'innovation à portée de main.</strong></p>
+                <p>TECH WEST est la première plateforme automatisée dédiée à l'actualité technologique en Afrique de l'Ouest. Propulsé par l'agence <strong>IDS Tech</strong>, notre moteur fusionne les meilleures sources mondiales pour vous offrir une vision claire sur l'IA, la Fintech et les Startups.</p>
+                
+                <h3>Nos Services</h3>
+                <ul>
+                    <li>✅ Création de plateformes Web & Mobile</li>
+                    <li>✅ Automatisation de flux de données</li>
+                    <li>✅ Design UI/UX & Branding</li>
+                </ul>
+            </div>
+
+            <div class="contact-form">
+                <h3>Collaborer avec nous</h3>
+                <form id="contactForm">
+                    <input type="text" placeholder="Votre Nom" required>
+                    <input type="email" placeholder="Votre Email" required>
+                    <textarea placeholder="Votre message ou projet de publicité..." rows="5" required></textarea>
+                    <button type="submit" class="ad-button">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>

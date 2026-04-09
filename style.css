@@ -14,7 +14,10 @@
     padding: 0;
     box-box-sizing: border-box;
 }
-
+a {
+    color: inherit;
+    text-decoration: none;
+}
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--gray-bg);
@@ -144,6 +147,77 @@ body {
     font-size: 2.8rem;
     margin-bottom: 15px;
     line-height: 1.1;
+}
+
+
+.ad-banner-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ad-card {
+    background: linear-gradient(90deg, #1a1a1a 0%, #2c2c2c 100%);
+    border: 2px solid #FF9900;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ad-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #FF9900;
+    color: black;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+
+.ad-text h3 {
+    color: #FF9900;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+}
+
+.ad-text p {
+    color: #ccc;
+    font-size: 1rem;
+    max-width: 500px;
+}
+
+.ad-button {
+    background: #12b100;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.ad-button:hover {
+    background: #074b00;
+    transform: scale(1.05);
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .ad-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .ad-text p {
+        font-size: 0.9rem;
+    }
 }
 
 /* GRID DES NEWS */
@@ -365,6 +439,17 @@ footer {
     color: black;
 }
 
+.cta_perso span {
+    color: var(--primary);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.cta_perso span:hover {
+    color: var(--secondary);
+    transform: scale(1.05);
+}
+
 /* Animation de déroulement */
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }
@@ -379,6 +464,9 @@ footer {
         flex-direction: column;
         gap: 10px;
         padding: 10px;
+    }
+    nav .abouto {
+        display: none; /* On cache le lien "À Propos" dans la nav pour le mettre dans le footer */
     }
 
     /* 2. On ajuste la zone de recherche pour qu'elle prenne toute la largeur */
@@ -417,4 +505,62 @@ footer {
         margin: 5% auto;
         padding: 15px;
     }
+}
+
+
+
+.about-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    overflow-y: auto;
+}
+
+.about-content {
+    background: #1a1a1a;
+    margin: 5% auto;
+    padding: 40px;
+    border: 1px solid #333;
+    width: 80%;
+    border-radius: 15px;
+    color: white;
+}
+
+.close-about {
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+    color: #FF9900;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.about-text h2 { color: #FF9900; margin-bottom: 20px; }
+.about-text h3 { margin-top: 20px; color: #fff; }
+.about-text ul { list-style: none; padding: 0; margin-top: 10px; }
+.about-text li { margin-bottom: 10px; color: #ccc; }
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #252525;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-content { width: 95%; padding: 20px; }
 }

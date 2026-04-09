@@ -211,3 +211,23 @@ function selectCategory(cat, label) {
     document.querySelector('.dropdown-menu').style.display = 'none';
     setTimeout(() => { document.querySelector('.dropdown-menu').style.removeProperty('display'); }, 100);
 }
+
+
+
+function toggleAbout() {
+    const about = document.getElementById('about-section');
+    if (about.style.display === "block") {
+        about.style.display = "none";
+        document.body.style.overflow = "auto";
+    } else {
+        about.style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+// Gestion de l'envoi (simulation)
+document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("Merci ! Votre message a été envoyé à l'équipe IDS Tech. Nous vous contacterons bientôt.");
+    toggleAbout();
+});
